@@ -1,5 +1,8 @@
 package com.devsuperior.gscommerce.entities;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +15,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @Email(message = "Email inválido")
+    @NotBlank(message = "Email é obrigatório")// lembrar de colocar essas annotations no DTO e tirar aqui do USER, as 3(email,notblank e unique)
+    @Column(unique = true)
     private String email;
+
     private String phone;
+
     private LocalDate birthDate;
     private String password;
 
