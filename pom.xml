@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.devsuperior</groupId>
-	<artifactId>gscommerce</artifactId>
+	<artifactId>gbcommerce</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gscommerce</name>
 	<description>Criação de CRUD completo</description>
