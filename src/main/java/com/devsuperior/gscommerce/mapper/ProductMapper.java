@@ -1,7 +1,7 @@
 package com.devsuperior.gscommerce.mapper;
 
 import com.devsuperior.gscommerce.entities.Product;
-import com.devsuperior.gscommerce.entities.dto.ProductResponseDTO;
+import com.devsuperior.gscommerce.dto.ProductResponseDTO;
 
 public class ProductMapper {
 
