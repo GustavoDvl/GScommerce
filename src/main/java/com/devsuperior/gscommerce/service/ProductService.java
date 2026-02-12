@@ -6,7 +6,6 @@ import com.devsuperior.gscommerce.entities.Product;
 import com.devsuperior.gscommerce.dto.ProductResponseDTO;
 import com.devsuperior.gscommerce.mapper.ProductMapper;
 import com.devsuperior.gscommerce.repositories.ProductRepository;
-import com.devsuperior.gscommerce.service.exceptions.CustomError;
 import com.devsuperior.gscommerce.service.exceptions.DataBaseException;
 import com.devsuperior.gscommerce.service.exceptions.ResourceNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;

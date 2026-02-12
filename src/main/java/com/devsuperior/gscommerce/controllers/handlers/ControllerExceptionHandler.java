@@ -1,11 +1,15 @@
 package com.devsuperior.gscommerce.controllers.handlers;
 
-import com.devsuperior.gscommerce.service.exceptions.CustomError;
+import com.devsuperior.gscommerce.dto.CustomError;
+import com.devsuperior.gscommerce.dto.FieldMessage;
+import com.devsuperior.gscommerce.dto.ValidationError;
 import com.devsuperior.gscommerce.service.exceptions.DataBaseException;
 import com.devsuperior.gscommerce.service.exceptions.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -36,5 +40,15 @@ public class ControllerExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
 
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<CustomError> methodArgumentNotValid(MethodArgumentNotValidException exception, HttpServletRequest request){
+        ValidationError error = new ValidationError(Instant.now(), HttpStatus.UNPROCESSABLE_ENTITY.value(), "Dados Inválidos", request.getRequestURI());
+
+        for(FieldError f : exception.getBindingResult().getFieldErrors()){
+            error.addError(f.getField(), f.getDefaultMessage());
+        }
+
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(error);
+    }
 
 }

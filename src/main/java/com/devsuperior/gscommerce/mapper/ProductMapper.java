@@ -5,8 +5,7 @@ import com.devsuperior.gscommerce.dto.ProductResponseDTO;
 
 public class ProductMapper {
 
-    public ProductMapper() {
-    }
+
 
     public static ProductResponseDTO toDTO(Product product){
         return new ProductResponseDTO(
